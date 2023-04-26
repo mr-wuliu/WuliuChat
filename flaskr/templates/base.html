@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {% block head %}
+        <title>{% block title %}污柳聊天室{% endblock %}</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="{{ url_for('static', filename='img/logo.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+        <script
+          src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Socket.IO 的 CDN 連結 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% endblock %}
+</head>
+<body>
+{# 通用页眉#}
+{% block header %}
+    <header>
+        <img src="{{ url_for('static', filename='img/logo.ico') }}">
+        <span style="margin-left: 10px">歡迎來到污柳聊天室!WuLiu-Chat Project</span>
+    </header>
+{% endblock %}
+{# 通用导航条 #}
+{% block nav %}
+    <div class="top_nav">
+    <div class="contain">
+        <div class="leftitem">
+            <ul>
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        <span class="icon-menu"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="rightitem">
+            <ul class="right_list_nav">
+                <li class="right_list_item">
+                    <a href="{{ url_for('chat.favorites') }}">
+                        <span class="icon-favorites" ></span>
+                    </a>
+                </li>
+                <li class="right_list_item">
+                    <a href="{{ url_for('chat.message') }}"><span class="icon-message"></span></a>
+                </li>
+                <li class="right_list_item">
+                    <a href="{{ url_for('chat.user') }}"><span class="icon-user"></span></a>
+                    {% if current_user.is_authenticated %}
+                    <ul class="user_drop_list">
+                    <li><a href="{{ url_for('chat.settings') }}">个人中心</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">登出</a></li>
+                    </ul>
+                    {% else %}
+                    <ul class="user_drop_list">
+                    <li><a href="{{ url_for('auth.login') }}">请登录</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">注册</a></li>
+                    </ul>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+{# 聊天室主界面 #}
+{% block main %}
+    <main>
+        <p> Base繼承界面 </p>
+    </main>
+{% endblock %}
+
+{# 消息閃現#}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{# Scripts 脚本文件#}
+{% block scripts %}
+
+{% endblock %}
+</body>
+</html>
+

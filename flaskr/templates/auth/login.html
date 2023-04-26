@@ -1,0 +1,21 @@
+{%  extends 'base.html' %}
+{% block title %}WuLiu-Chat-Login{% endblock %}
+
+{% block main %}
+    <main>
+    <section id="login">
+        <form method="POST" action="{{ url_for('auth.login') }}" >
+            <div class="login_container">
+                <div class="login_title">
+                    <p>请登录</p>
+                    <p style="font-size: 16px; color: orangered">{{ error }}</p>
+                </div>
+                <input type="text" placeholder="账号" name="username">
+                <input type="password" placeholder="密码" name="password">
+                <button>登录聊天室</button>
+                <span>没有账号？<a href="{{ url_for('auth.register') }}">去注册</a> </span>
+            </div>
+        </form>
+    </section>
+    </main>
+{% endblock %}

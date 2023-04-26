@@ -1,0 +1,24 @@
+{%  extends 'base.html' %}
+{% block title %}WuLiu-Chat-Home{% endblock %}
+
+{% block main %}
+    <main>
+    <p>主界面</p>
+    <form class="chat_form">
+        <fieldset>
+            <legend>Message</legend>
+            <input type="text" id="message" name="message" />
+            <input type="button" id="send" value="Send" />
+            <input type="button" id="test" value="Test" />
+        </fieldset>
+    </form>
+    <hr />
+    <div id="chat_content">
+        <p> 等待接受文字</p>
+    </div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" charset="UTF-8" src="{{ url_for('static',filename='js/chat.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,296 @@
+*{
+ 	padding:0;
+ 	margin:0;
+ 	border:0;
+    font-family: 思源宋体, iconfont;
+    list-style: none;
+    text-decoration: none;
+
+}
+a:link {
+    color: coral;
+}
+a:visited {
+    color: coral;
+}
+/* 设置字体 */
+@font-face {
+    font-family: 思源宋体;
+    src: url("/static/font/Source_Han_Serif_SC_Light_Light.otf");
+}
+/* 设置图标字体 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('/static/font/iconfont.ttf?t=1682143150409') format('truetype');
+}
+header {
+    width: 100%;
+    display: flex;
+    margin-top: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: navajowhite;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: oldlace;
+}
+
+.top_nav {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: bisque;
+    align-items: center;
+    justify-content: center;
+
+}
+.contain {
+    height:50px;
+    width: 100%;
+}
+.rightitem {
+    float: right;
+}
+.rightitem a {
+    height: 50px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.rightitem span {
+    display: block;
+    height: 50px;
+    width: 40px;
+}
+.leftitem {
+    height: 50px;
+    width: 40px;
+    float: left;
+}
+.leftitem li {
+    color: coral;
+}
+.right_list_nav {
+    display: block;
+    height: 60px;
+    width: 160px;
+    float: left;
+}
+.right_list_nav li{
+    display: block;
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin-left: 10px;
+    margin-right: 0;
+}
+.user_drop_list {
+    height: 42px;
+    width: 100px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: flex-start;*/
+    text-align: center;
+}
+.right_list_item ul{
+    float: right;
+}
+.right_list_item:hover .user_drop_list{
+    display: flex;
+}
+.user_drop_list li{
+    position: relative;
+    left: 5px;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 2px;
+    margin: 3px;
+    background-color: navajowhite;
+    box-shadow: 0 2px 2px #f5be1d;
+}
+.user_drop_list a {
+    height: 30px;
+    width: 100px;
+}
+
+/* 图标字体样式 */
+.icon-menu .icon-favorites .icon-message .icon-user {
+    font-family: "iconfont" !important;
+    font-size: 24px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* 导航栏图标 */
+/* 菜单 */
+.icon-menu:before {
+    font-size: 36px;
+    content: "\10117";
+}
+/* 收藏夹图标 */
+.icon-favorites:before {
+    font-size: 36px;
+    content: "\10119";
+}
+/* 消息通知 */
+.icon-message:before {
+    font-size: 36px;
+    content: "\10118 ";
+}
+/* 个人中心 */
+.icon-user:before{
+    font-size: 36px;
+    content: "\1010f";
+}
+
+
+/* 登录界面样式 */
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*position: relative;*/
+}
+.login_container{
+    /*相对定位*/
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    /*垂直配列*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 500px;
+    /*阴影*/
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.login_container .login_title{
+    font-size: 32px;
+    margin: 30px auto 70px auto;
+}
+.login_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login_title p{
+    display: block;
+}
+.login_container input{
+    width: 280px;
+    height: 40px;
+    text-indent: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+    margin: 12px auto;
+}
+.login_container button{
+    width: 280px;
+    height: 40px;
+    margin: 35px auto 40px auto;
+    border: none;
+    background: linear-gradient(-200deg, #ffc372, #6297ff);
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    /*动画过渡*/
+    transition: 0.5s;
+}
+.login_container button:hover{
+    background: linear-gradient(-200deg, #6297ff, #ffc372);
+    background-position-x: -280px;
+}
+.login_container span{
+    font-size: 14px;
+}
+.login_container a{
+    color: #6669f3;
+    text-decoration: none;
+}
+
+/* 注册界面 */
+#register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*position: relative;*/
+}
+.register_container {
+    /*相对定位*/
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    /*垂直配列*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 400px;
+    /*阴影*/
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.register_container .register_title {
+    font-size: 32px;
+    /*margin: 30px auto 70px auto;*/
+}
+.register_container input {
+    width: 280px;
+    height: 40px;
+    text-indent: 8px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+    margin: 12px auto;
+}
+.register_container button{
+    width: 280px;
+    height: 40px;
+    margin: 35px auto 40px auto;
+    border: none;
+    background: linear-gradient(-200deg, #ffc372, #6297ff);
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    /*动画过渡*/
+    transition: 0.5s;
+}
+.register_container p {
+    color: red;
+}
+/* 主界面 */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 800px;
+}
+
+/* 聊天室主页 */
