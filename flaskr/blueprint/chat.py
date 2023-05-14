@@ -8,7 +8,7 @@ from werkzeug.exceptions import abort
 
 bp = Blueprint('chat', __name__)
 
-# @socketio.on('message')
+# # @socketio.on('message')
 # def handle_message(data):
 #     print('received message: ' + data)
 #     socketio.emit('updateUI',data)
@@ -39,7 +39,6 @@ def favorites():
 @login_required
 def message():
     return render_template('chat/message.html')
-
 @bp.route('/user')
 @login_required
 def user():

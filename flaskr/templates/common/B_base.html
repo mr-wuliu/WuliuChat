@@ -1,0 +1,48 @@
+{% from 'bootstrap5/form.html' import render_form %}
+<!doctype html>
+<html lang="en">
+<head>
+    {# 引入网页标题 #}
+    <title>{% block title %}污柳聊天室{% endblock %}</title>
+    {# 引入网页图标 #}
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.ico') }}">
+    <meta charset="UTF-8">
+    {# Bootstrap样式 #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+{% block nav %}
+    <nav class="nav-divider">
+    <p class="nav-tabs">欢迎来到污柳小院</p>
+    </nav>
+{% endblock %}
+
+{% block wrapper_home %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2" style="background-color: #0a53be">123</div>
+            <div class="col-md-2 col-md-offset-1" style="background-color: #0dcaf0">123</div>
+        </div>
+    </div>
+
+{% endblock %}
+{#    <div class="jumbotron">#}
+{#      <h1>Bootstrap Tutorial</h1>#}
+{#      <p>Bootstrap is the most popular HTML, CSS...</p>#}
+{#        {{ render_form(form) }}#}
+{#    </div>#}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">四列-----------------------</div>
+        <div class="col-md-8">八列-----------------------</div>
+    </div>
+</div>
+
+</body>
+
+</html>
+
+
+
+
+{#<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>#}

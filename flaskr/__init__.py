@@ -1,13 +1,10 @@
 import os
 
-from flask import Flask
-# from flaskr.db import get_db
-# from flaskr import config
-from flaskr.extensions import db, login_manager, socketio
-from flaskr.blueprint import auth, chat
+from flask import Flask, render_template
+from flaskr.extensions import db, login_manager, socketio, bootstrap
+from flaskr.blueprint import auth, chat, home
 
-
-def create_app(test_config=None):
+def create_app():
     # create and configure the app
     app = Flask(__name__)#, instance_relative_config=True)
     app.config.from_pyfile('config.py')
@@ -69,4 +66,11 @@ def register_extensions(app):
 def register_blueprint(app):
     app.register_blueprint(auth.bp)
     app.register_blueprint(chat.bp)
+    app.register_blueprint(home.bp)
     app.add_url_rule('/', endpoint='home')
+
+
+def register_error_handlers(app: Flask):
+    @app.errorhandler(400)
+    def bad_request(e):
+        return render_template('common/error.html')

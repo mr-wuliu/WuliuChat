@@ -14,3 +14,5 @@ SQLALCHEMY_ECHO = True
 # 加密密钥
 SECRET_KEY = 'DkCuMcr7qRsLJxKU'
 
+# bootstrap使用本地资源
+BOOTSTRAP_SERVE_LOCAL = True
