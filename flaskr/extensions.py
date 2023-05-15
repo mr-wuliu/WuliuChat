@@ -8,6 +8,7 @@ socketio = SocketIO()
 login_manager = LoginManager()
 bootstrap = Bootstrap5()
 
+
 @login_manager.user_loader
 def load_user(id):
     from flaskr.models import User
