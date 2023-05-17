@@ -13,6 +13,9 @@ def create_app():
     """
     register_extensions(app)
     register_blueprint(app)
+    with app.app_context():
+        db.create_all()
+
     return app
 
 
