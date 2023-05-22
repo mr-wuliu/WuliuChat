@@ -113,3 +113,37 @@
     {% endif %}
 
 {% endblock %}
+
+{% block mul_nav %}
+
+
+{% endblock %}
+
+{% block person_login %}
+    {% if current_user.is_authenticated %}
+     <li class="nav-item me-3 me-lg-0 dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+           data-bs-toggle="dropdown">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle"
+                 height="22"
+                 alt="" loading="lazy"/>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+            <li><a class="dropdown-item" href="#">个人中心</a></li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li>
+                <hr class="dropdown-divider"/>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#">登出</a>
+            </li>
+        </ul>
+    </li>
+    {%  else %}
+    <li class="nav-item me3 me-lg-0">
+     <a class="nav-link " href="#" role="button">
+         <span>登录</span>
+     </a>
+    </li>
+    {% endif %}
+{% endblock %}

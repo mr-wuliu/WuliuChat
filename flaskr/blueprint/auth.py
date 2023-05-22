@@ -37,18 +37,7 @@ def register():
         if user is not None:
             flash('The account is already register')
             return render_template('auth/register.html', status='已注册')
-        # 註冊用戶信息
-        # if error is None:
-        #     try:
-        #         db.execute(
-        #             "INSERT INTO user (username, password) VALUES (?, ?)",
-        #             (username, generate_password_hash(password)),
-        #         )
-        #         db.commit()
-        #     except db.IntegrityError:
-        #         error = f"User {username} is already registered."
-        #     else:
-        #         return redirect(url_for("chat.home"))
+
         if error is None:
             user = User(username=username)
             user.set_password(password)
