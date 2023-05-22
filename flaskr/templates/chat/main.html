@@ -1,0 +1,115 @@
+{%  extends './common/base.html' %}
+
+{% block post %}
+<div class="container-md mt-3">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="row">
+                <p class="col-10">最新</p>
+                <a href="#" class="col-2 link-info">更多</a>
+            </div>
+            <div class="list-group">
+                {% for new in news %}
+                    <li class="list-group-item">{{ new }}</li>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <p class="col-10">热议</p>
+                <a href="#" class="col-2 link-info">更多</a>
+            </div>
+            <div class="list-group">
+                {% for hot in hotposts %}
+                    <li class="list-group-item">{{ hot }}</li>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <p class="col-10">榜单</p>
+                <a href="#" class="col-2 link-info">更多</a>
+            </div>
+            <div class="list-group">
+                {% for rank in ranklist %}
+                    <li class="list-group-item">{{ rank }}</li>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block home_daily_col%}
+<div class="container-sm mt-3">
+    <div class="row">
+        <div class="col-sm">
+            <div class="calendar-container">
+                <div class="calendar-body">
+                    <div class="calendar-head">
+                        摸 🐟 加油！
+                        <br>
+                        距离周六还有
+                    </div>
+                    <div class="calendar-content">
+                        <span id="vDay">5</span>
+                        <span style="font-size: 30px">天</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm">
+            <div class="daily-login-container">
+                <a class="btn btn-warning p-3" style="color: white;width: 50%;height: 30%;line-height: 100%" href="#"
+                   role="button"><b>签到</b></a>
+                {% if checkstatus == true %}
+                    <b class="mt-2" style="color: red">签到成功!</b>
+                {% else %}
+                    <b class="mt-2" style="color: saddlebrown;">今日未签到</b>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="preview">
+                <div id="yesterday" onclick="yesterday()">
+                    <img style="border-radius: 0" id="yesterdayImg"
+                         src="https://pwl.stackoverflow.wiki/2021/10/coin-2-70217cc1.png">
+                    <b>领取签到奖励</b>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="preview">
+                <div class="system-store" href="https://fishpi.cn/shop">
+                    <img style="border-radius: 0" src="https://pwl.stackoverflow.wiki/2022/03/ss-61cf1b96.png">
+                    <b>系统商店</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block home_card %}
+
+    {% if home_card %}
+    <div class="container mt-5">
+        <div class="wrapper index-full-size" id="goodNight" style="">
+            <div style="float: left;margin-top: 20px; margin-left: 40px">
+                <svg class="icon" style="width: 85px;height: 85px" aria-hidden="true"><use xlink:href="#icon-yueliang"></use></svg>
+            </div>
+            <div style="margin: 10px 20px 20px 30px;">
+                <div style="font-size: 25px;">工作辛苦啦，请早点回家休息 :)</div>
+                <div style="font-size: 17px; margin-top: 10px">下班时间，我们认为专注于做自己喜欢的事会更有意义。</div>
+                <div style="font-size: 17px; margin-top: 10px;line-height: 17px">现在是摸鱼派的休息时间，但小派还在默默地陪伴你，请尽快完成工作回家吧~
+                    <span class="ft-red" style="line-height: 10px">♥️</span></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

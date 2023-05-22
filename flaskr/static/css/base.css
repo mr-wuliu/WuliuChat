@@ -1,3 +1,20 @@
+/* 基础样式 */
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    min-width: 720px;
+    max-width: 1300px
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
 /* 导航条样式 */
 .form-white.input-group > .form-control:focus {
     border-color: #fff;
@@ -85,8 +102,26 @@
     text-decoration: none
 }
 .preview img {
+    transition: all .2s ease-out 0s;
     margin-top: 18px;
     height: 60px;
     width: 60px;
 }
 
+.system-store {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.index-full-size {
+    background-color: rgba(12,0,103,.7);
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    margin-bottom: 30px;
+    color: #fff;
+    font-family: "Ma Shan Zheng",cursive;
+    cursor: default
+}
