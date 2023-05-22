@@ -4,14 +4,7 @@ from flask import (
 from flask_login import login_required
 from flaskr.extensions import socketio, db
 
-from werkzeug.exceptions import abort
-
 bp = Blueprint('chat', __name__)
-
-# # @socketio.on('message')
-# def handle_message(data):
-#     print('received message: ' + data)
-#     socketio.emit('updateUI',data)
 
 @socketio.on('send', namespace='/chat')
 def chat(data):

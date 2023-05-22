@@ -1,24 +1,86 @@
-{%  extends 'base.html' %}
+{% extends 'common/base.html' %}
 
 {% block title %}WuLiu-Chat-Register{% endblock %}
 
-{% block main %}
-    <main>
-        <section id="register">
-            <form method="POST">
-                <div class="register_container">
-                    <div class="register_title">
-                        <img src="{{ url_for('static',filename='img/logo.ico')}}" height="25px">
-                        注册
-                    </div>
-                    <input type="text" required="required" placeholder="用户名*" name="username">
-                    <input type="password" required="required" placeholder="密码*" name="password">
-                    <input type="email" required="required" placeholder="邮箱*" name="email">
-                    <button>用户注册</button>
-                    <p>{{ status }}</p>
-                </div>
-            </form>
-        </section>
-    </main>
+{#{% block main %}#}
+{#    <main>#}
+{#        <section id="register">#}
+{#            <form method="POST">#}
+{#                <div class="register_container">#}
+{#                    <div class="register_title">#}
+{#                        <img src="{{ url_for('static',filename='img/logo.ico')}}" height="25px">#}
+{#                        注册#}
+{#                    </div>#}
+{#                    <input type="text" required="required" placeholder="用户名*" name="username">#}
+{#                    <input type="password" required="required" placeholder="密码*" name="password">#}
+{#                    <input type="email" required="required" placeholder="邮箱*" name="email">#}
+{#                    <button>用户注册</button>#}
+{#                    <p>{{ status }}</p>#}
+{#                </div>#}
+{#            </form>#}
+{#        </section>#}
+{#    </main>#}
+{##}
+{#{% endblock %}#}
 
+{% block account %}
+<div class="container">
+<section class="h-100 h-custom" style="background-color: #ffffff;">
+    <div class="container py-5 h-100"><div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+            <div class="card rounded-3">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                     class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                     alt="Sample photo">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">用户注册</h3>
+                    <form class="px-md-2" method="POST">
+                        <div class="form-outline mb-4">
+                            <label class="form-label">用户名</label>
+                            <input type="text" class="form-control"
+                                   name="username"
+                                   placeholder="Enter Username"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4"><div class="form-outline datepicker">
+                                <label class="form-label">密码</label>
+                                <input type="text" class="form-control"
+                                       name="password"
+                                       placeholder="Enter your password"
+                                />
+                            </div></div>
+                            <div class="col-md-6 mb-4"><label>
+                                <label>性别</label>
+                                <select class="form-select mt-2">
+                                    <option value="1" disabled>Gender</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Male</option>
+                                    <option value="4">Other</option>
+                                </select>
+                            </label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <div class="form-outline">
+                                <input type="email" class="form-control"
+                                       name="email"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4"><div class="form-outline datepicker">
+                                <label class="form-label">邀请码</label>
+                                <input type="text" class="form-control" name="invitation" />
+                            </div></div>
+
+
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+</div>
 {% endblock %}

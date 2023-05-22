@@ -51,24 +51,12 @@ def register():
 # 登錄視圖
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
-    # if request.method == 'GET':
-    #     return render_template('auth/login.html')
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
         error = None
-        # fetchone() 根據查詢返回一個記錄行, 如果沒有結果則返回None
-        # db = get_db()
-        # user = db.execute(
-        #     'SELECT * FROM user WHERE username = ?', (username,)
-        # ).fetchone()
-        # user = db.engine.excute('SELECT * FROM user WHERE username = ?',(username))
         user = User.query.filter_by(username=username).first()
-        # if user is None:
-        #     error = 'Incorrect username.'
-        # elif not check_password_hash(user['password'], password):
-        #     error = 'Incorrect password.'
         if user is None:
             error = 'Incorrect username'
         elif not user.verify_password(password):
@@ -76,29 +64,12 @@ def login():
         if error is None:
             login_user(user)
             return redirect(url_for('chat.home'))
-        # flash 用於存儲在渲染模塊時可以調用的信息
-        # flash(error)
         return render_template('auth/login.html',error=error)
-    # 其他請求重定向到登錄界面
-    # return redirect(url_for('auth.login'))
-    return render_template('auth/login.html')
 
-# 註冊一個在視圖函數之前運行的函數,
-# 此時, 無論用戶訪問何處, 都要檢查是否已經存儲在session中
-# @bp.before_app_request
-# def load_logged_in_user():
-#     user_id = session.get('user_id')
-#
-#     if user_id is None:
-#         g.user = None
-#     else:
-#         g.user = get_db().execute(
-#             'SELECT * FROM user WHERE id = ?', (user_id,)
-#         ).fetchone()
+    return render_template('auth/login.html')
 
 
 # 註銷用戶
-
 @bp.route('/logout')
 # @login_required
 def logout():
