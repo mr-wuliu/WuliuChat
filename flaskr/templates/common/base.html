@@ -24,15 +24,14 @@
     <script src="{{ url_for('static',filename='js/iconfont.js') }}"></script>
 
 </head>
-<body>
+<body style="min-height: border-box">
 
 {% block nav %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ url_for('home.home') }}">
                 <img class="fab fa-2x mx-3 ps-1" src="{{ url_for('static', filename='img/logo.ico') }}" width="30px"
                      height="30px">
-                {#        <i class="fab fa-github fa-2x mx-3 ps-1"></i>#}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -89,9 +88,12 @@
                          <li class="nav-item me-3 me-lg-0 dropdown">
                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
                                data-bs-toggle="dropdown">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle"
-                                     height="22"
-                                     alt="" loading="lazy"/>
+                                 {% if current_user.is_authenticated %}
+                                     <img src="{{ current_user.gravatar }}" class="rounded-circle" height="22" alt=""/>
+                                 {% else %}
+                                     <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle"
+                                          height="22" alt="" loading="lazy"/>
+                                 {% endif %}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
                                 <li><a class="dropdown-item" href="#">个人中心</a></li>
@@ -100,7 +102,7 @@
                                     <hr class="dropdown-divider"/>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">登出</a>
+                                    <a class="dropdown-item" href="{{ url_for('auth.logout') }}">登出</a>
                                 </li>
                             </ul>
                         </li>
@@ -141,6 +143,10 @@
 
 {% endblock %}  <!-- end of main block -->
 
+
+{% block main %}
+
+{% endblock %}
 <!-- Footer -->
 {% block footer %}
     <footer class="bg-dark text-center text-white">
@@ -179,43 +185,6 @@
                 ></a>
             </section>
             <!-- Section: Social media -->
-
-            <!-- Section: Form -->
-            <section class="">
-                <form action="">
-                    <!--Grid row-->
-                    <div class="row d-flex justify-content-center">
-                        <!--Grid column-->
-                        <div class="col-auto">
-                            <p class="pt-2">
-                                <strong>Sign up for our newsletter</strong>
-                            </p>
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-md-5 col-12">
-                            <!-- Email input -->
-                            <div class="form-outline form-white mb-4">
-                                <input type="email" id="form5Example21" class="form-control"/>
-                                <label class="form-label" for="form5Example21">Email address</label>
-                            </div>
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-auto">
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-outline-light mb-4">
-                                Subscribe
-                            </button>
-                        </div>
-                        <!--Grid column-->
-                    </div>
-                    <!--Grid row-->
-                </form>
-            </section>
-            <!-- Section: Form -->
 
             <!-- Section: Text -->
             <section class="mb-4">

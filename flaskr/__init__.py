@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template
-from flaskr.extensions import db, login_manager, socketio, bootstrap
+from flaskr.extensions import db, login_manager, socketio, bootstrap, migrate
 from flaskr.blueprint import auth, chat, home
 
 def create_app():
@@ -29,6 +29,7 @@ def register_extensions(app: Flask):
     login_manager.init_app(app)  # 登录验证
     socketio.init_app(app)  # 连接会话
     bootstrap.init_app(app)
+    migrate.init_app(app,db)
 
 
 def register_blueprint(app: Flask):

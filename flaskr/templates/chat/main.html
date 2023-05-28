@@ -10,7 +10,10 @@
             </div>
             <div class="list-group">
                 {% for new in news %}
-                    <li class="list-group-item">{{ new }}</li>
+                    <li class="list-group-item">
+                        <img class="rounded" height="24" src="{{ new[1] }}" alt=""/>
+                        <a>「 {{ new[0] }} 」</a>
+                    </li>
                 {% endfor %}
             </div>
         </div>
@@ -27,12 +30,15 @@
         </div>
         <div class="col-4">
             <div class="row">
-                <p class="col-10">榜单</p>
+                <p class="col-10">活跃用户</p>
                 <a href="#" class="col-2 link-info">更多</a>
             </div>
             <div class="list-group">
                 {% for rank in ranklist %}
-                    <li class="list-group-item">{{ rank }}</li>
+                    <li class="list-group-item">
+                    <img class="rounded" height="22" src="{{ rank.profile }}" alt=""/>
+                    <a>   {{ rank.username }}</a>
+                    </li>
                 {% endfor %}
             </div>
         </div>
@@ -111,6 +117,53 @@
         </div>
     </div>
     {% endif %}
+{% endblock %}
+
+{% block account %}
+<div class="container-md mt-3 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="row">
+                <p class="col-10">聊天室</p>
+                <a href="#" class="col-2 link-info">更多</a>
+            </div>
+            <div class="list-group">
+                {% for new in news %}
+                    <li class="list-group-item">
+                        <img class="rounded" height="24" src="{{ new[1] }}" alt=""/>
+                        <a>「 {{ new[0] }} 」</a>
+                    </li>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <p class="col-10">问答</p>
+                <a href="#" class="col-2 link-info">更多</a>
+            </div>
+            <div class="list-group">
+                {% for hot in hotposts %}
+                    <li class="list-group-item">{{ hot }}</li>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <p class="col-10">新人用户</p>
+                <a href="#" class="col-2 link-info">更多</a>
+            </div>
+            <div class="list-group">
+                {% for rank in ranklist %}
+                    <li class="list-group-item">
+                    <img class="rounded" height="22" src="{{ rank.profile }}" alt=""/>
+                    <a>   {{ rank.username }}</a>
+                    </li>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
 

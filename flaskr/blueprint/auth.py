@@ -24,6 +24,7 @@ def register():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
+        profile = request.form['profile']
 
         error = None
         if not username:
@@ -32,6 +33,9 @@ def register():
             error = 'Password is required.'
         elif not email:
             error = 'Email is required'
+        elif not profile:
+            error = 'Profile is required'
+
         # db = None
         user = User.query.filter_by(username=username).first()
         if user is not None:
@@ -39,7 +43,9 @@ def register():
             return render_template('auth/register.html', status='已注册')
 
         if error is None:
-            user = User(username=username)
+            user = User(username=username,
+                        profile=profile)
+
             user.set_password(password)
             db.session.add(user)
             db.session.commit()
@@ -47,6 +53,7 @@ def register():
             return redirect(url_for('chat.home'))
         flash(error)
     return render_template('auth/register.html')
+
 
 # 登錄視圖
 @bp.route('/login', methods=('GET', 'POST'))

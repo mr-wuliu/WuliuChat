@@ -19,10 +19,12 @@ def get():
     socketio.emit('get')
 
 @bp.route('/')
-@login_required
 def home():
     return render_template('chat/home.html')
 
+@bp.route('/chat')
+def chat():
+    return render_template('chat/chat.html')
 @bp.route('/favorites')
 @login_required
 def favorites():
