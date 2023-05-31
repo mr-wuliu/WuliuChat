@@ -22,7 +22,8 @@
     <link href="{{ url_for('static',filename='awesome/css/all.css') }}" rel="stylesheet">
     <!-- 图标 -->
     <script src="{{ url_for('static',filename='js/iconfont.js') }}"></script>
-
+    {% block head_add %}
+    {% endblock %}
 </head>
 <body style="min-height: border-box">
 
@@ -51,7 +52,7 @@
                         <a class="nav-link" href="#">论坛</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">聊天室</a>
+                        <a class="nav-link" href="{{ url_for('chat.channel') }}">聊天室</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">排行榜</a>

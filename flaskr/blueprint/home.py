@@ -9,17 +9,13 @@ bp = Blueprint('home',__name__)
 
 @bp.route('/home', methods=['GET','POST'])
 def home():
-    username = False
     form = RegForm()
     if form.validate_on_submit():
         # 取出username欄位的輸入值
         username = form.username.data
         # 重設username欄位
         form.username.data = ''
-    sql_cmd = """ 
-    select * 
-    from post
-    """
+
     posts = Post.query.order_by(Post.timestamp.asc()).paginate(page=1, per_page=20, error_out=False)
     ret = db.session.query(Post.title, User.profile).filter(Post.author== User.id).paginate(page=1, per_page=20, error_out=False)
     post_list = posts.items

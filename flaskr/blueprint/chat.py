@@ -25,6 +25,27 @@ def home():
 @bp.route('/chat')
 def chat():
     return render_template('chat/chat.html')
+
+@bp.route('/channel')
+def channel():
+    cards = []
+    class card:
+        img = ""
+        href = ""
+    card1 = card()
+    card1.img = "img/channel/channel1.jpg"
+    card2 = card()
+    card2.img = "img/channel/channel2.jpg"
+    card3 = card()
+    card3.img = "img/channel/channel3.jpg"
+    card4 = card()
+    card4.img = "img/channel/channel4.jpg"
+    cards.append(card1)
+    cards.append(card2)
+    cards.append(card3)
+    cards.append(card4)
+    return render_template('chat/channel.html',
+                           cards=cards)
 @bp.route('/favorites')
 @login_required
 def favorites():
