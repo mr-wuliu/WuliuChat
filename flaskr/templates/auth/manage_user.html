@@ -1,0 +1,88 @@
+{% extends './auth/management.html' %}
+{% block head_add %}
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+{% endblock %}
+
+
+{% block panel_main %}
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+    <h1 class="h2">用户数据管理</h1>
+    <p>用户个人管理, 支持 ... 等功能</p>
+
+    <div class="row">
+        <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+            <div class="card">
+                <h5 class="card-header">最新用户列表</h5>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Permissions</th>
+                                <th scope="col">like</th>
+                                <th scope="col">Date</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody id="user_list">
+                                <!-- 获取用户列表 -->
+                            </tbody>
+                          </table>
+                    </div>
+                    <a href="#" class="btn btn-block btn-light">View all</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="pt-5 d-flex justify-content-between">
+          <div class="text-center p-3" style="background-color: #f9f9ff">
+            © 2020 Copyright:
+            <a class="text-black-50 " href="https://mrwuliu.cc/">MrWuliu.CC</a>
+        </div>
+    </footer>
+</main>
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        function getUserList(){
+            let user_list = [[]]
+            $.ajax
+            ({
+                url: "/user_info",
+                type: "get",
+                async:false,
+                success: function (res) {
+                    user_list = res;
+                }
+            });
+            return user_list;
+        }
+        window.onload = function () {
+            let user_list = getUserList();
+            $.each(user_list,function (index, data) {
+                $("#user_list").prepend("<tr>" +
+                    "<th scope=\"row\">"+ data[0]+"</th>" +
+                    "<td>"+data[1]+"</td>" +
+                    "<td>admin</td>" +
+                    "<td>" +data[2] + "</td>" +
+                    "<td>Aug 31 2020</td>"+
+                    "<td><a href=\"#\" class=\"btn btn-sm btn-primary\">View</a></td>"+
+                    "</tr>"
+                );
+            })
+
+        }
+
+    </script>
+
+
+{% endblock %}

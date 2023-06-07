@@ -174,8 +174,23 @@
     flex-shrink: 0;
     width: 100%;
     height: 100vh;
-    background-color: gainsboro;
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    /*background-color: gainsboro;*/
+    /*border: solid rgba(0, 0, 0, .15);*/
+    border-width: 2px 0;
+    /*box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);*/
+}
+
+.text-limit {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-decoration: none;
+}
+.link-homestyle {
+    color: #3f4650;
+    text-decoration: none;
+}
+.link-homestyle:hover {
+    color: #51585e;
+    text-decoration: underline;
 }

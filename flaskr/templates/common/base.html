@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% block head %}
     <meta charset="UTF-8">
     {# 网页标题 #}
     <title>{% block title %}污柳聊天室{% endblock %}</title>
@@ -11,21 +12,22 @@
     <!-- 引入 bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    {#    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>#}
-    {#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>#}
-    {#    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>#}
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    {% block self_style %}
     <!-- 自定义 css样式 -->
     <link href="{{ url_for('static',filename='css/base.css') }}" rel="stylesheet">
     <!-- aswsome 样式 -->
     <link href="{{ url_for('static',filename='awesome/css/all.css') }}" rel="stylesheet">
     <!-- 图标 -->
     <script src="{{ url_for('static',filename='js/iconfont.js') }}"></script>
+    {% endblock %}
+{% endblock %}
     {% block head_add %}
     {% endblock %}
 </head>
 <body style="min-height: border-box">
+    <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 {% block nav %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -96,15 +98,17 @@
                                           height="22" alt="" loading="lazy"/>
                                  {% endif %}
                             </a>
+
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
                                 <li><a class="dropdown-item" href="#">个人中心</a></li>
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li>
                                     <hr class="dropdown-divider"/>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ url_for('auth.logout') }}">登出</a>
-                                </li>
+                                <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">登出</a></li>
+                                {% if current_user.is_admin %}
+                                    <li><a class="dropdown-item" href="{{ url_for('management.management_dash') }}">管理中心</a></li>
+                                {% endif %}
                             </ul>
                         </li>
                         {%  else %}
@@ -119,10 +123,10 @@
     </nav>
 {% endblock %}
 
-
+{% block sidebar %}
+{% endblock %}
 
 <!-- 第一区块 -->
-
 {% block post %}
     <!-- home post -->
 {% endblock %}
@@ -190,9 +194,7 @@
             <!-- Section: Text -->
             <section class="mb-4">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                    污柳聊天室! 一个专注于摸鱼的网页! 是一个基于Flask开发的小型论坛系统.
                 </p>
             </section>
             <!-- Section: Text -->
@@ -201,102 +203,60 @@
             <section class="">
                 <!--Grid row-->
                 <div class="row">
-                    <!--Grid column-->
+                    <!-- 占位符 -->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
 
-                        <ul class="list-unstyled mb-0">
+                    </div>
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 ">
+                        <div class="container-fluid">
+                            <h5 class="text-uppercase border rounded-pill rounded-1">
+                            摸鱼好去处
+                            </h5>
+                        </div>
+
+                        <ul class="list-unstyled mb-0 ">
                             <li>
-                                <a href="#!" class="text-white">Link 1</a>
+                                <a href="https://www.cxy521.com/" class="link-homestyle text-white">程序员导航</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 2</a>
+                                <a href="https://www.lundao.pub/" class="link-homestyle text-white">论道社区</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 3</a>
+                                <a href="https://xyears.cn/" class="link-homestyle text-white">十年之约论坛</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 4</a>
+                                <a href="https://bbs.tampermonkey.net.cn/" class="link-homestyle text-white">油猴中文网</a>
                             </li>
                         </ul>
                     </div>
-                    <!--Grid column-->
 
-                    <!--Grid column-->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
+                        <div class="container-fluid">
+                            <h5 class="text-uppercase border rounded-pill rounded-1">
+                            探索
+                            </h5>
+                        </div>
 
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="#!" class="text-white">Link 1</a>
+                                <a href="https://github.com/csfwff/rhythm" class="text-white">Rhythm 社区引擎</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
+                                <a href="https://boluo.chat/" class="text-white">菠萝Chat</a>
                             </li>
                         </ul>
                     </div>
-                    <!--Grid column-->
 
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#!" class="text-white">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#!" class="text-white">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0"></div>
                 </div>
-                <!--Grid row-->
             </section>
-            <!-- Section: Links -->
         </div>
-        <!-- Grid container -->
 
-        <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2020 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <a class="text-white" href="https://mrwuliu.cc/">MrWuliu.CC</a>
         </div>
-        <!-- Copyright -->
     </footer>
 {% endblock %}
 

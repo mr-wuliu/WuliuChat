@@ -70,7 +70,7 @@ def login():
             error = 'Incorrect password'
         if error is None:
             login_user(user)
-            return redirect(url_for('chat.home'))
+            return redirect(url_for('home.home'))
         return render_template('auth/login.html',error=error)
 
     return render_template('auth/login.html')

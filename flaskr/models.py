@@ -55,6 +55,16 @@ class Config(db.Model):
     ConfigName = db.Column(db.String(50), nullable=False)
     ConfigValue = db.Column(db.Integer,nullable=False)
 
+class Channel(db.Model):
+    __tablename__ ='channel'
+    id = db.Column(db.Integer, primary_key = True)
+    cover = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(50), nullable=False)
+    manager = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class Data(db.Model):
+    __tablename__ = 'data'
+    id = db.Column(db.Integer, primary_key = True)
 
 if __name__ == "__main__":
     db.create_all()

@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, render_template
 from flaskr.extensions import db, login_manager, socketio, bootstrap, migrate
-from flaskr.blueprint import auth, chat, home
+from flaskr.blueprint import auth, chat, home, management
 
 def create_app():
     # create and configure the app
@@ -38,6 +38,7 @@ def register_blueprint(app: Flask):
     :param app:
     :return:
     """
+    app.register_blueprint(management.bp)
     app.register_blueprint(auth.bp)
     app.register_blueprint(chat.bp)
     app.register_blueprint(home.bp)

@@ -1,0 +1,156 @@
+{% extends './auth/management.html' %}
+{% block head_add %}
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+{% endblock %}
+
+{% block panel_main %}
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+    <h1 class="h2">网页管理</h1>
+    <p>管理机器设备以及监控网站数据</p>
+    <div class="row my-4">
+        <div class="col-12 col-xl-4">
+            <div class="card">
+                <h5 class="card-header">用户增长曲线</h5>
+                <div class="card-body">
+                    <div id="traffic-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="card">
+                <h5 class="card-header">在线用户</h5>
+                <div class="card-body">
+                  <h5 class="card-title">345</h5>
+                  <p class="card-text text-success">环比增长 18.2%</p>
+                </div>
+              </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+            <div class="card">
+                <h5 class="card-header">帖子总数</h5>
+                <div class="card-body">
+                  <h5 class="card-title">64</h5>
+                  <p class="card-text text-success">环比增长 2.5%</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+{#        <div class="col-12 col-xl-8 mb-4 mb-lg-0">#}
+{#            <div class="card">#}
+{#                <h5 class="card-header">Latest transactions</h5>#}
+{#                <div class="card-body">#}
+{#                    <div class="table-responsive">#}
+{#                        <table class="table">#}
+{#                            <thead>#}
+{#                              <tr>#}
+{#                                <th scope="col">Order</th>#}
+{#                                <th scope="col">Product</th>#}
+{#                                <th scope="col">Customer</th>#}
+{#                                <th scope="col">Total</th>#}
+{#                                <th scope="col">Date</th>#}
+{#                                <th scope="col"></th>#}
+{#                              </tr>#}
+{#                            </thead>#}
+{#                            <tbody>#}
+{#                              <tr>#}
+{#                                <th scope="row">17371705</th>#}
+{#                                <td>Volt Premium Bootstrap 5 Dashboard</td>#}
+{#                                <td>johndoe@gmail.com</td>#}
+{#                                <td>€61.11</td>#}
+{#                                <td>Aug 31 2020</td>#}
+{#                                <td><a href="#" class="btn btn-sm btn-primary">View</a></td>#}
+{#                              </tr>#}
+{#                              <tr>#}
+{#                                <th scope="row">17370540</th>#}
+{#                                <td>Pixel Pro Premium Bootstrap UI Kit</td>#}
+{#                                <td>jacob.monroe@company.com</td>#}
+{#                                <td>$153.11</td>#}
+{#                                <td>Aug 28 2020</td>#}
+{#                                <td><a href="#" class="btn btn-sm btn-primary">View</a></td>#}
+{#                              </tr>#}
+{#                              <tr>#}
+{#                                <th scope="row">17371705</th>#}
+{#                                <td>Volt Premium Bootstrap 5 Dashboard</td>#}
+{#                                <td>johndoe@gmail.com</td>#}
+{#                                <td>€61.11</td>#}
+{#                                <td>Aug 31 2020</td>#}
+{#                                <td><a href="#" class="btn btn-sm btn-primary">View</a></td>#}
+{#                              </tr>#}
+{#                              <tr>#}
+{#                                <th scope="row">17370540</th>#}
+{#                                <td>Pixel Pro Premium Bootstrap UI Kit</td>#}
+{#                                <td>jacob.monroe@company.com</td>#}
+{#                                <td>$153.11</td>#}
+{#                                <td>Aug 28 2020</td>#}
+{#                                <td><a href="#" class="btn btn-sm btn-primary">View</a></td>#}
+{#                              </tr>#}
+{#                              <tr>#}
+{#                                <th scope="row">17371705</th>#}
+{#                                <td>Volt Premium Bootstrap 5 Dashboard</td>#}
+{#                                <td>johndoe@gmail.com</td>#}
+{#                                <td>€61.11</td>#}
+{#                                <td>Aug 31 2020</td>#}
+{#                                <td><a href="#" class="btn btn-sm btn-primary">View</a></td>#}
+{#                              </tr>#}
+{#                              <tr>#}
+{#                                <th scope="row">17370540</th>#}
+{#                                <td>Pixel Pro Premium Bootstrap UI Kit</td>#}
+{#                                <td>jacob.monroe@company.com</td>#}
+{#                                <td>$153.11</td>#}
+{#                                <td>Aug 28 2020</td>#}
+{#                                <td><a href="#" class="btn btn-sm btn-primary">View</a></td>#}
+{#                              </tr>#}
+{#                            </tbody>#}
+{#                          </table>#}
+{#                    </div>#}
+{#                    <a href="#" class="btn btn-block btn-light">View all</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+    <footer class="pt-5 d-flex justify-content-between">
+          <div class="text-center p-3" style="background-color: #f9f9ff">
+            © 2020 Copyright:
+            <a class="text-black-50 " href="https://mrwuliu.cc/">MrWuliu.CC</a>
+        </div>
+    </footer>
+</main>
+{% endblock %}
+
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script>
+    function getData() {
+        let params= {request: 'manage'}
+        var result = [[]]
+        var name = [[]]
+        $.ajax
+        ({
+            url: "/data",
+            type:"get",
+            data: {'data':JSON.stringify(params)},
+            async: false,
+            success: function (res) {
+                result =  res['value']
+                name = res['month']
+            }
+        });
+        return {'result':result,'name':name};
+    }
+    new Chartist.Line('#traffic-chart', {
+        labels: getData()['name'],
+        series: [getData()['result']]
+
+        }, {
+        low: 0,
+        showArea: true
+    });
+</script>
+{% endblock %}

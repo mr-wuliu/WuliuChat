@@ -1,7 +1,7 @@
 {%  extends './common/base.html' %}
 
 {% block post %}
-<div class="container-md mt-3">
+<div class="container-md mt-5 shadow pb-3">
     <div class="row justify-content-center">
         <div class="col-4">
             <div class="row">
@@ -9,10 +9,10 @@
                 <a href="#" class="col-2 link-info">更多</a>
             </div>
             <div class="list-group">
-                {% for new in news %}
-                    <li class="list-group-item">
-                        <img class="rounded" height="24" src="{{ new[1] }}" alt=""/>
-                        <a>「 {{ new[0] }} 」</a>
+                {% for post in posts %}
+                    <li class="list-group-item text-nowrap text-limit"> <!-- text-limit"> -->
+                        <img class="rounded " height="24" src="{{ post[1] }}" alt=""/>
+                        <a href="#" class="link-homestyle">「 {{ post[0] }} 」</a>
                     </li>
                 {% endfor %}
             </div>
@@ -20,11 +20,11 @@
         <div class="col-4">
             <div class="row">
                 <p class="col-10">热议</p>
-                <a href="#" class="col-2 link-info">更多</a>
+                <a href="#" class="col-2 ">更多</a>
             </div>
-            <div class="list-group">
-                {% for hot in hotposts %}
-                    <li class="list-group-item">{{ hot }}</li>
+            <div class="list-group text-limit">
+                {% for hot in hot_news %}
+                    <li class="list-group-item fw-bold "><a href="#" class="link-homestyle">{{ hot }}</a></li>
                 {% endfor %}
             </div>
         </div>
@@ -37,19 +37,18 @@
                 {% for rank in ranklist %}
                     <li class="list-group-item">
                     <img class="rounded" height="22" src="{{ rank.profile }}" alt=""/>
-                    <a>   {{ rank.username }}</a>
+                    <a >   {{ rank.username }}</a>
                     </li>
                 {% endfor %}
             </div>
         </div>
-
     </div>
 </div>
 
 {% endblock %}
 
 {% block home_daily_col%}
-<div class="container-sm mt-3">
+<div class="container-sm mt-5 shadow pb-3">
     <div class="row">
         <div class="col-sm">
             <div class="calendar-container">
@@ -103,7 +102,7 @@
 {% block home_card %}
 
     {% if home_card %}
-    <div class="container mt-5">
+    <div class="container mt-5 ">
         <div class="wrapper index-full-size" id="goodNight" style="">
             <div style="float: left;margin-top: 20px; margin-left: 40px">
                 <svg class="icon" style="width: 85px;height: 85px" aria-hidden="true"><use xlink:href="#icon-yueliang"></use></svg>
@@ -120,18 +119,18 @@
 {% endblock %}
 
 {% block account %}
-<div class="container-md mt-3 mb-5">
+<div class="container-md mt-3 mb-5 shadow pb-3">
     <div class="row justify-content-center">
         <div class="col-4">
             <div class="row">
                 <p class="col-10">聊天室</p>
                 <a href="#" class="col-2 link-info">更多</a>
             </div>
-            <div class="list-group">
-                {% for new in news %}
+            <div class="list-grnewsoup">
+                {% for room in chat_rooms %}
                     <li class="list-group-item">
-                        <img class="rounded" height="24" src="{{ new[1] }}" alt=""/>
-                        <a>「 {{ new[0] }} 」</a>
+                        <img class="rounded" height="24" src="{{ room[0] }}" alt=""/>
+                        <a href="{{ n }}" >「 {{ room[1] }} 」</a>
                     </li>
                 {% endfor %}
             </div>
@@ -142,8 +141,8 @@
                 <a href="#" class="col-2 link-info">更多</a>
             </div>
             <div class="list-group">
-                {% for hot in hotposts %}
-                    <li class="list-group-item">{{ hot }}</li>
+                {% for note in notes %}
+                    <li class="list-group-item">{{ note }}</li>
                 {% endfor %}
             </div>
         </div>
@@ -164,6 +163,20 @@
 
     </div>
 </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+    window.onload = function () {
+        let weekday = new Date().getDay();
+    {#    0 -> 7 1 -> 1 ... 6 -> 6 #}
+        let cump = 6 - weekday;
+        if (cump > 0) {
+            document.getElementById("vDay").innerHTML=cump.toString();
+        }
+    }
+    </script>
 
 {% endblock %}
 

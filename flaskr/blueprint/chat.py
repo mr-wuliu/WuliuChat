@@ -18,32 +18,29 @@ def test():
 def get():
     socketio.emit('get')
 
-@bp.route('/')
-def home():
-    return render_template('chat/home.html')
+# @bp.route('/')
+# def home():
+#     return render_template('chat/main.html')
 
 @bp.route('/chat')
 def chat():
     return render_template('chat/chat.html')
-
-@bp.route('/channel')
-def channel():
+@bp.route('/channel', defaults={'page': 1})
+@bp.route('/channel/<page>', methods=['GET'])
+def channel(page):
     cards = []
     class card:
         img = ""
         href = ""
-    card1 = card()
-    card1.img = "img/channel/channel1.jpg"
-    card2 = card()
-    card2.img = "img/channel/channel2.jpg"
-    card3 = card()
-    card3.img = "img/channel/channel3.jpg"
-    card4 = card()
-    card4.img = "img/channel/channel4.jpg"
-    cards.append(card1)
-    cards.append(card2)
-    cards.append(card3)
-    cards.append(card4)
+        title = ""
+    title_list = ['游戏','公共','新闻','编程讨论','社区维护']
+    if page == 1:
+        for i in range(1,5):
+            card_ = card()
+            card_.img = 'img/channel/channel'+str(i) + '.jpg'
+            card_.title = title_list[i-1]
+            cards.append(card_)
+
     return render_template('chat/channel.html',
                            cards=cards)
 @bp.route('/favorites')
